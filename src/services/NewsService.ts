@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NewsArticle, ArticleType } from '../types';
 
 class NewsService {

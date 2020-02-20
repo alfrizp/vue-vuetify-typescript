@@ -6,7 +6,7 @@
       v-model="showMenu"
     >
       <v-list dense>
-        <v-list-item @click="doNothing">
+        <v-list-item>
           <v-list-item-action>
             <v-icon>settings</v-icon>
           </v-list-item-action>
@@ -32,7 +32,7 @@
       color="primary"
     >
       <v-app-bar-nav-icon @click.stop="toggleMenu"></v-app-bar-nav-icon>
-      <v-toolbar-title>Vue News</v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-app-bar>
 
   </div>
@@ -40,17 +40,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
 
 @Component
 export default class TopToolbar extends Vue {
+  @Getter('title', { namespace: 'topToolbar' }) title!: string;
+
   showMenu = false;
 
   toggleMenu(): void {
     this.showMenu = !this.showMenu;
-  }
-
-  doNothing(): void {
-    console.log(this);
   }
 }
 </script>
